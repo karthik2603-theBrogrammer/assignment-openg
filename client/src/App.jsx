@@ -7,7 +7,7 @@ function App() {
   const [newPostContent, setNewPostContent] = useState(""); // State for input field
 
   const fetchPosts = () => {
-    axios.get("http://localhost:3000/get-posts").then((res) => {
+    axios.get("https://assignment-openg-backend.vercel.app/get-posts").then((res) => {
       console.log(res)
       const sortedPosts = res.data['posts']
         .sort((a, b) => b.timestamp - a.timestamp)
@@ -31,7 +31,7 @@ function App() {
 
   // const createPost = (e) => {
   //   e.preventDefault();
-  //   axios.post("http://localhost:3000/create-post/", { content: newPostContent })
+  //   axios.post("https://assignment-openg-backend.vercel.app/create-post/", { content: newPostContent })
   //     .then((res) => {
   //       setPosts((prevPosts) => [res.data.res, ...prevPosts]); // Add new post to the top
   //       setNewPostContent(""); // Clear input field
@@ -43,7 +43,7 @@ function App() {
 
   const handlePost = (key) => {
     e.preventDefault();
-    axios.post(`http://localhost:3000/create-post/${key}`, { content: newPostContent })
+    axios.post(`https://assignment-openg-backend.vercel.app/create-post/${key}`, { content: newPostContent })
       .then((res) => {
         const fet = fetchPosts()
         setPosts(fet)
@@ -55,14 +55,14 @@ function App() {
   };
 
   const likePost = (key) => {
-    axios.post(`http://localhost:3000/like-post/${key}`).then(() => {
+    axios.post(`https://assignment-openg-backend.vercel.app/like-post/${key}`).then(() => {
       alert("Post", key, "liked")
       fetchPosts()
     })
   }
 
   const dislikePost = (key) => {
-    axios.post(`http://localhost:3000/dislike-post/${key}`).then(() => {
+    axios.post(`https://assignment-openg-backend.vercel.app/dislike-post/${key}`).then(() => {
       alert("Post", key, "liked")
       fetchPosts()
     })
